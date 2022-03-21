@@ -1,5 +1,7 @@
 import React from 'react';
+import styled from 'styled-components'
 import './App.css';
+
 import { Switch, Route, Redirect } from 'react-router-dom'
 
 import HomePage from './pages/homepage/HomePage';
@@ -12,6 +14,7 @@ import { auth, createUserProfileDocument } from './firebase/firebase'
 import react from 'react';
 import { connect } from 'react-redux'
 import { setCurrentUser } from './redux/user/userAction';
+import Contact from './pages/contact/contact';
 
 class App extends react.Component {
   unsubscribeFromAuth = null
@@ -48,6 +51,7 @@ class App extends react.Component {
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route path='/shop' component={ShopPage} />
+          <Route exact path='/contact' component={Contact} />
           <Route exact path='/checkout' component={Checkout} />
           <Route exact path='/signin' render={() => this.props.currentUser ? (<Redirect to='/' />) : (<SignInAndSignUp />)} />
         </Switch>
